@@ -24,3 +24,12 @@ jobs:
         cache: maven
     - name: Build with Maven
       run: mvn -B package --file pom.xml
+    - name: show package result
+      run: pwd && ls -l target
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: selected
+        path: |
+          Dockerfile
+          target/simprest-0.1.jar
