@@ -39,6 +39,9 @@ jobs:
       uses: actions/download-artifact@v3
       with:
         name: selected
+        path: |
+          Dockerfile
+          target/simprest-0.1.jar
     - name: show package result
       run: pwd && ls -l && ls -l target
     - name: Set up JDK 11
