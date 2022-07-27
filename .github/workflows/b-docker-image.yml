@@ -1,4 +1,4 @@
-name: Docker Image CI
+name: Docker Image CI - B
 
 on:
   workflow_dispatch:
@@ -16,6 +16,6 @@ jobs:
 #    - name: Build the Docker image
 #      run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
     - name: change dir
-      run: cd src
+      run: cd src && ls -l
     - name: show dir
-      run: pwd && ls -l
+      run: pwd && ls -l && echo "look like each RUN is put to the default dir!"
