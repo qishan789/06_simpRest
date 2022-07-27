@@ -60,6 +60,6 @@ jobs:
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag qishan789/simprest:$(date +%s)
     - name: variables
-      run: echo "date_1= ${date_1}, date_s= ${date_s}, OTHER_VAR1=$OTHER_VAR1"
+      run: echo "date_1= $date_1, date_s= $date_s, OTHER_VAR1=$OTHER_VAR1"
     - name: List Docker images
       run: docker images | grep "qishan789/simprest"
