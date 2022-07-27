@@ -28,6 +28,7 @@ jobs:
       with:
         name: selected
         path: |
+          pom.xml
           Dockerfile
           target/simprest-0.1.jar
           
@@ -36,18 +37,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Download Dockerfile
+    - name: Download selected
       uses: actions/download-artifact@v3
       with:
         name: selected
-        path:
-          Dockerfile
-    - name: Download simprest-0.1.jar
-      uses: actions/download-artifact@v3
-      with:
-        name: selected
-        path:
-          target
     - name: show package result
       run: pwd && ls -l && ls -l target
     - name: Set up JDK 11
