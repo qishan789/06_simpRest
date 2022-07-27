@@ -43,7 +43,7 @@ jobs:
         path:
           Dockerfile
     - name: Download simprest-0.1.jar
-      uses: actions/upload-artifact@v3
+      uses: actions/download-artifact@v3
       with:
         name: selected
         path:
