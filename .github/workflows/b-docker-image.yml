@@ -11,7 +11,7 @@ env:
   EVENT_NAME: ${{ github.event_name }}
   BRANCH_NAME: ${{ github.ref_name }}
   TEST_SECRET01: ${{ secrets.REPO_06_SECRET_TEST }}
-  TEST_SECRET02: ${{ secrets.ENV_SEC_01.env_secret_11 }}
+  TEST_SECRET02: ${{ secrets.env_secret_11 }}
 
 jobs:
 
@@ -22,7 +22,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: show package
-      run: pwd && ls -l
+      run: pwd && ls -l && df -H
 #    - name: Build the Docker image
 #      run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
     - name: change dir
