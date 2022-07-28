@@ -5,10 +5,12 @@ on:
   
 env:
   APP_NAME: ${{ github.event.repository.name }} # 06_simpRest
+  THIS_REPOSITORY: ${{ github.repository }}
   THIS_WORKFLOW_NAME: ${{ github.workflow }} # Docker Image CI - B
   WORKING_DIR: ${{ github.workspace }}
   EVENT_NAME: ${{ github.event_name }}
   BRANCH_NAME: ${{ github.ref_name }}
+  TEST_SECRET01: ${{ secrets.06_REPO_SECRET_TEST }}
 
 jobs:
 
