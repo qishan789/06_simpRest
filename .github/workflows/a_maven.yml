@@ -7,7 +7,6 @@ on:
   workflow_dispatch:
   
 env:
-  date_s: $(date +%s)
   OTHER_VAR: some-thing
 
 jobs:
@@ -62,6 +61,13 @@ jobs:
     - name: variables
       run: |
         date_2=$(date +%s)
-        echo "date_2= $date_2, date_s= $date_s, OTHER_VAR1=$OTHER_VAR1"
+        echo "date_2= $date_2, OTHER_VAR1=$OTHER_VAR1"
     - name: List Docker images
       run: docker images | grep "qishan789/simprest"
+    - name: login to github container registry
+      run: echo ${{ GITHUB_TOKEN }} | docker login ghcr.io -u qishan789 --password-stdin
+    - name: push the image to github registry
+      run: docker push ghcr.io/qishan789/simprest
+    - name: logout from github registry
+      run: docker logout ghcr.io
+      
