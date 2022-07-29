@@ -58,7 +58,7 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag qishan789/simprest
+      run: docker build . --file Dockerfile --tag qishan789/simprest:latest
     - name: variables
       run: |
         date_2=$(date +%s)
@@ -69,8 +69,8 @@ jobs:
       run: echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u qishan789 --password-stdin
     - name: push the image to github registry
       run: | 
-        docker tag simprest ghcr.io/qishan789/simprest
-        docker push ghcr.io/qishan789/simprest
+        docker tag qishan789/simprest:latest ghcr.io/qishan789/simprest:latest
+        docker push ghcr.io/qishan789/simprest:latest
     - name: logout from github registry
       run: docker logout ghcr.io
       
