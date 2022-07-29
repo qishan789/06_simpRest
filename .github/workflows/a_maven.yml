@@ -68,7 +68,9 @@ jobs:
     - name: login to github container registry
       run: echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u qishan789 --password-stdin
     - name: push the image to github registry
-      run: docker push ghcr.io/qishan789/simprest
+      run: | 
+        docker tag simprest ghcr.io/qishan789/simprest
+        docker push ghcr.io/qishan789/simprest
     - name: logout from github registry
       run: docker logout ghcr.io
       
