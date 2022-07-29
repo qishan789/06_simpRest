@@ -58,7 +58,7 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag qishan789/simprest:$(date +%s)
+      run: docker build . --file Dockerfile --tag qishan789/simprest
     - name: variables
       run: |
         date_2=$(date +%s)
