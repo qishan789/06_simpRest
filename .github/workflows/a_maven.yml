@@ -40,7 +40,6 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     env:
-      date_1: $(date +%s)
       OTHER_VAR1: some-thing-1
     steps:
     - name: set dynamic variable
@@ -57,20 +56,18 @@ jobs:
         java-version: '11'
         distribution: 'temurin'
         cache: maven
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag qishan789/simprest:latest
+
     - name: variables
       run: |
         date_2=$(date +%s)
         echo "date_2= $date_2, OTHER_VAR1=$OTHER_VAR1"
-    - name: List Docker images
-      run: docker images | grep "qishan789/simprest"
+
     - name: login to github container registry
       run: echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u qishan789 --password-stdin
-    - name: push the image to github registry
+    - name: build/push the image to github registry
       run: | 
-        docker tag qishan789/simprest:latest ghcr.io/qishan789/simprest:latest
-        docker push ghcr.io/qishan789/simprest:latest
+        docker build . --file Dockerfile --tag ghcr.io/qishan789/simprest:0.2
+        docker push ghcr.io/qishan789/simprest:0.2
     - name: logout from github registry
       run: docker logout ghcr.io
       
